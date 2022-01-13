@@ -1,2 +1,19 @@
 # adbfraud
 This repository is intended to display the ease of automated fraud in Android apps. 
+
+dutch.py is intended to show how the absence of basic bot prevention features in mobile apps lead to dire consequences for companies. By using a publicly available anonymous email address generator and free proxies, a user can easily spam the sign up page of an app. Not only is this process automated, but it can be run in as many emulators as the machine can run. The file works by first attaching itself to the Android emulator and running basic steps to click around and input info into the app. After signing up, the program fetches the verification email from the free email service. If it's required to verify, it will use an anticaptcha service to bypass the captcha. Once the account is verified, its email handle is written to a .txt file. In this specific app, the way that this can be abused is demonstrated by setting the birthday of the new user to one day in advance. By aging all the new accounts for a day, the user will be able to collect a free drink from the resturaunt. 
+
+card.py shows how weak credit card payment gateway protection in mobile apps can be easily exploited. Additionally, it also shows how a simple registration vulnerability can feed into a much greater financial consequence. This file is quite simple, all it needs to do is accept credit card details from the user alongside a list of registered accounts. By inputting the accounts registered using dutch.py alongside a list of fraudulent credit cards, a malicious actor could easily defraud this drive-through coffee chain of thousands of dollars. The program uses the uiautomator feature to detect when a successful transaction has gone through. It proceeds to take a screenshot of the QR code of the account after a successful transaction and write it to the user's computer. 
+
+I hope that this tool is able to open some eyes on the prevalance and ease of both mobile app fraud and automated fraud. If your system can be exploited by automated fraud, you have serious problems in your system. A malicious actor could easily do unprecented damage using automated tools. Furthermore, I've personally observed that mobile apps tend to be seen as "more secure" for some reason, and as a result users are given a lot more leeway on what they can do. Captchas are much less prevalent and standard practices in the industry are simply dropped. 
+
+In this specific instance, the company in question could have followed a couple of basic steps to avoid such an issue. 
+- Limit accounts created per IP. There is no reason one IP should be able to pump out hundreds of accounts in a short amount of time. 
+- Disabled funny email domains. If the company does not want to operate on a whitelist of only the known email providers, then they should at least blacklist tempmail services. 
+- Add a captcha to the verification page. There is some sort of cloudflare protection on that page, but there should be a captcha as well. 
+- Restrict a device from creating so many accounts. This can be can be bypassed by someone committed enough, but it is good practice anyways. Chic-fil-A for example is very strict on their mobile app in this regard. 
+- Require a verified, non-VOIP phone number. This too can be defeated through the use of services like textverified.com, but this will push the price up for malicious actors. 
+- Use any sort of anti-fraud in their credit card processing. I tested multiple factors with cards of my own and I was always charged. 
+- Disable rooted and emulated android instances from accessing the app. 
+
+These are just off the top of my head. Of course, this is an uphill battle against criminals who are increasingly cunning. There are always more ways to improve, but many mobile apps are missing the basics entirely. 
