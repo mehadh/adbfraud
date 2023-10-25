@@ -1,5 +1,5 @@
 # adbfraud
-This repository is intended to display the ease of automated fraud in Android apps. 
+ANDROID FRAUD SHOWCASE. This repository is intended to display the ease of automated fraud in Android apps. 
 
 dutch.py is intended to show how the absence of basic bot prevention features in mobile apps lead to dire consequences for companies. By using a publicly available anonymous email address generator and free proxies, a user can easily spam the sign up page of an app. Not only is this process automated, but it can be run in as many emulators as the machine can run. The file works by first attaching itself to the Android emulator and running basic steps to click around and input info into the app. After signing up, the program fetches the verification email from the free email service. If it's required to verify, it will use an anticaptcha service to bypass the captcha. Once the account is verified, its email handle is written to a .txt file. In this specific app, the way that this can be abused is demonstrated by setting the birthday of the new user to one day in advance. By aging all the new accounts for a day, the user will be able to collect a free drink from the resturaunt. 
 
